@@ -5,7 +5,7 @@ a=`pwd`
 b="c.chinachelai.com"
 d="cl.chinachelai.com"
 read -p "please input your api_domain name: " c 
-read -p "please input your master domain name: " e
+read -p "please input your master_domain name: " e
 function modify_directory()
 {
       sed -i "s@/usr/nginx@$a@g" c/admin/gateway.lua
