@@ -25,4 +25,4 @@ echo "--------初始化本地配置文件---------"
 modify_directory
 modify_domain_name
 echo "--------你可以修改代码了-----------"
-echo  -------你的登陆方式:http://$e:$f------------
+echo  你的登陆方式:http://$e:$f
