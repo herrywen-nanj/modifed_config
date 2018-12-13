@@ -19,10 +19,13 @@ function modify_domain_name()
       sed -i "s@$b@$c@g" che/script/services/appService.js
       sed -i "s@$b@$c@g" conf/nginx.conf
       sed -i "s@$d@$e@g" conf/nginx.conf
-      sed -i "s@80@$f@g" conf/nginx.conf
+      if [ -n "$f" ]
+      then
+		sed -i "s@80@$f@g" conf/nginx.conf
+      fi
 }
 echo "--------初始化本地配置文件---------"
 modify_directory
 modify_domain_name
 echo "--------你可以修改代码了-----------"
-echo  你的登陆方式:http://$e:$f
+echo  你的登陆方式: http://$e:$f
