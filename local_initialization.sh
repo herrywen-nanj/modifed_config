@@ -9,7 +9,7 @@ api_name="c.chinachelai.com"
 master_name="cl.chinachelai.com"
 local_port="80"
 #定义gateway文件路径
-gateway_directory=(c/admin/gateway.lua c/user/gateway.lua)
+gateway_directory=(c/admin/gateway.lua c/user/gateway.lua conf/nginx.conf)
 #定义变化c.chinachelai的配置文件
 c_configfile=(che/app/index.html che/app/webapp/index.js che/script/services/appService.js conf/nginx.conf)
 #定义变化cl.chinachelai.com的配置文件
