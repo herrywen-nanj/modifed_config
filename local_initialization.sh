@@ -35,11 +35,11 @@ function modify_master_domain_name()
       do
           sed -i "s@${master_name}@${master_domain_name}@g" $k
       done
-      [ -n "${service_port}" ] &&  sed -i "s@{local_port}@${serice_port}@g" conf/nginx.conf
+      [ -n "${service_port}" ] &&  sed -i "s@${local_port}@${service_port}@g" conf/nginx.conf
 }
 echo "--------初始化本地配置文件中---------"
 gateway
 modify_api_domain_name
 modify_master_domain_name
 echo "--------你可以修改自己的代码了-----------"
-[ -z "$f" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port}
+[ -z "${service_port}" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port}
