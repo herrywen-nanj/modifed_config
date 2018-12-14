@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 #/usr/local/openresty/nginx/code
-#git clone git@github.com:herrywen-nanj/webapp.git > /dev/null  2>&1
-git clone git@47.99.91.45:devops/webapp.git > /dev/null  2>&1
+git clone git@github.com:herrywen-nanj/webapp.git > /dev/null  2>&1
+#git clone git@47.99.91.45:devops/webapp.git > /dev/null  2>&1
 cd webapp
 local_path=`pwd`
 api_name="c.chinachelai.com"
