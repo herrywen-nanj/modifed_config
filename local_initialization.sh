@@ -10,19 +10,19 @@ read -p "please input your master_domain name: " e
 read -p "please input your service_port: " f
 function modify_directory()
 {
-      sed -i "s@/usr/nginx@$a@g" $a/c/admin/gateway.lua
-      sed -i "s@/usr/nginx@$a@g" $a/c/user/gateway.lua
+      sed -i "s@/usr/nginx@$a@g" c/admin/gateway.lua
+      sed -i "s@/usr/nginx@$a@g" c/user/gateway.lua
 }
 function modify_domain_name()
 {
-      sed -i "s@$b@$c@g" $a/che/app/index.html
-      sed -i "s@$b@$c@g" $a/che/app/webapp/index.js
-      sed -i "s@$b@$c@g" $a/che/script/services/appService.js
-      sed -i "s@$b@$c@g" $a/conf/nginx.conf
-      sed -i "s@$d@$e@g" $a/conf/nginx.conf
+      sed -i "s@$b@$c@g" che/app/index.html
+      sed -i "s@$b@$c@g" che/app/webapp/index.js
+      sed -i "s@$b@$c@g" che/script/services/appService.js
+      sed -i "s@$b@$c@g" conf/nginx.conf
+      sed -i "s@$d@$e@g" conf/nginx.conf
       if [ -n "$f" ]
       then
-		sed -i "s@80@$f@g" $a/conf/nginx.conf
+		sed -i "s@80@$f@g" conf/nginx.conf
       fi
 }
 echo "--------初始化本地配置文件中---------"
