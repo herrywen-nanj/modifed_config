@@ -42,4 +42,4 @@ gateway
 modify_api_domain_name
 modify_master_domain_name
 echo "--------你可以修改自己的代码了-----------"
-[ -z "${service_port}" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port}
+[ -z "${service_port}" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port} || exit 2
