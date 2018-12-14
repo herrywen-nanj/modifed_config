@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 git clone git@github.com:herrywen-nanj/webapp.git > /dev/null  2>&1
 cd webapp
 local_path=`pwd`
@@ -47,3 +48,4 @@ modify_api_domain_name "${c_configfile[*]}"
 modify_master_domain_name "${cl_configfile[*]}"
 echo "--------你可以修改自己的代码了-----------"
 [ -z "${service_port}" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port} || exit 2
+set +e
