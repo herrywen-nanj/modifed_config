@@ -1,9 +1,10 @@
 #!/bin/bash
 git clone git@github.com:herrywen-nanj/webapp.git > /dev/null  2>&1
 cd webapp
-a=`pwd`
-b="c.chinachelai.com"
-d="cl.chinachelai.com"
+local_path=`pwd`
+api_name="c.chinachelai.com"
+master_name="cl.chinachelai.com"
+local_port="80"
 #定义gateway文件路径
 gateway_directory=(c/admin/gateway.lua c/user/gateway.lua)
 #定义变化c.chinachelai的配置文件
@@ -18,23 +19,23 @@ function gateway()
 {
       for j in ${gateway_directory[@]}
       do
-         sed -i "s@/usr/nginx@$a@g" $j
+         sed -i "s@/usr/nginx@${local_path}@g" $j
       done       
 }
 function modify_api_domain_name()
 {
      for i in ${c_configfile[@]}
      do
-	sed -i "s@$b@${api_domain_name}@g" $i
+	sed -i "s@${api_name}@${api_domain_name}@g" $i
      done
 }             
 function modify_master_domain_name()
 {      
       for k in ${cl_configfile[@]}
       do
-          sed -i "s@$d@${master_domain_name}@g" $k
+          sed -i "s@${master_name}@${master_domain_name}@g" $k
       done
-      [ -n "${service_port}" ] &&  sed -i "s@80@${serice_port}@g" conf/nginx.conf
+      [ -n "${service_port}" ] &&  sed -i "s@{local_port}@${serice_port}@g" conf/nginx.conf
 }
 echo "--------初始化本地配置文件中---------"
 gateway
