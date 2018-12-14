@@ -17,29 +17,32 @@ read -p "please input your master_domain name: " master_domain_name
 read -p "please input your service_port: " service_port
 function gateway()
 {
-      for j in ${gateway_directory[@]}
+      arr=$1
+      for j in ${arr[@]}
       do
          sed -i "s@/usr/nginx@${local_path}@g" $j
       done       
 }
 function modify_api_domain_name()
 {
-     for i in ${c_configfile[@]}
+     brr=$1
+     for i in ${brr[@]}
      do
 	sed -i "s@${api_name}@${api_domain_name}@g" $i
      done
 }             
 function modify_master_domain_name()
 {      
-      for k in ${cl_configfile[@]}
+      crr=$1
+      for k in ${crr[@]}
       do
           sed -i "s@${master_name}@${master_domain_name}@g" $k
       done
       [ -n "${service_port}" ] &&  sed -i "s@${local_port}@${service_port}@g" conf/nginx.conf
 }
 echo "--------初始化本地配置文件中---------"
-gateway
-modify_api_domain_name
-modify_master_domain_name
+gateway "${gateway_directory[@]}"
+modify_api_domain_name "${c_configfile[@]}"
+modify_master_domain_name "${cl_configfile[@]}"
 echo "--------你可以修改自己的代码了-----------"
 [ -z "${service_port}" ] && echo  你的登陆方式: http://${master_domain_name} || echo 你的登陆方式: http://${master_domain_name}:${service_port} || exit 2
